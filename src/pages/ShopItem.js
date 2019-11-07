@@ -1,32 +1,12 @@
 import React, {useState, useEffect} from 'react';
 
 function ShopItem({match}){
-  useEffect(() => {
-    const fetchItem = async () => {
-      // set swapi api_url
-      const api_url = `https://swapi.co/api/people/${match.params.id}`
-
-      // get data from api_url
-      const data = await fetch(api_url);
-
-      // decode recieved jsonData str to item
-      const item = await data.json();
-
-      // save results array to state
-      setItem(item)
-
-      // display data for troubleshooting
-      //console.log("item:");
-      //console.dir(item);
-    };
-    
-    fetchItem();
-  }, [match]);
-
-  const [item, setItem] = useState({});
+  // call custom effect hook
+  const item = useItemFetch(match);
 
   // display data for troubleshooting
   //console.dir(match);
+  //console.dir(item);
 
   // return the ui view
   return (
@@ -48,3 +28,32 @@ function ShopItem({match}){
 }
 
 export default ShopItem;
+
+// custom effect hook
+function useItemFetch(match){
+  const [item, setItem] = useState({});
+
+  useEffect(() => {
+    const fetchItem = async () => {
+      // set swapi api_url
+      const api_url = `https://swapi.co/api/people/${match.params.id}`
+
+      // get data from api_url
+      const data = await fetch(api_url);
+
+      // decode recieved jsonData str to item
+      const item = await data.json();
+
+      // save results array to state
+      setItem(item)
+
+      // display data for troubleshooting
+      //console.log("item:");
+      //console.dir(item);
+    };
+
+    fetchItem();
+  }, [match]);
+
+  return item;
+}
