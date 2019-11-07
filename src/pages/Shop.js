@@ -4,7 +4,7 @@ function Shop(){
   return (
     <div className="container">
       <header>
-        <p>This is the shop page</p>
+        <h1>This is the shop page</h1>
       </header>
     </div>
   );

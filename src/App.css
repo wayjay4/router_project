@@ -1,3 +1,12 @@
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+}
+
 .navigation-bar {
   display: flex;
   justify-content: space-around;

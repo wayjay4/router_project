@@ -4,7 +4,7 @@ function About(){
   return (
     <div className="container">
       <header>
-        <p>This is the about page</p>
+        <h1>This is the about page</h1>
       </header>
     </div>
   );
