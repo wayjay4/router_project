@@ -1,0 +1,21 @@
+.navigation-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgb(73, 79, 82);
+  color: white;
+}
+
+.nav_links {
+  list-style: none;
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav_links:hover {
+  color: orange;
+  cursor: pointer;
+}

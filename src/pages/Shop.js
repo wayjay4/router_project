@@ -2,9 +2,9 @@ import React from 'react';
 
 function Shop(){
   return (
-    <div>
+    <div className="container">
       <header>
-        This is the shop page
+        <p>This is the shop page</p>
       </header>
     </div>
   );
