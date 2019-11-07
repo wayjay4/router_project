@@ -19,7 +19,7 @@ function ShopItem({match}){
       //console.log("item:");
       //console.dir(item);
     };
-
+    
     fetchItem();
   }, [match]);
 
