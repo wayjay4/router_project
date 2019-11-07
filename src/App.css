@@ -39,3 +39,7 @@ li.nav_link:hover {
 .nav-links a {
   text-decoration: none;
 }
+
+.shop-item {
+  text-align: center;
+}
