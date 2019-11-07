@@ -7,15 +7,26 @@
   color: white;
 }
 
-.nav_links {
+.nav_link {
   list-style: none;
   width: 40%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  color: white;
+  text-decoration: none;
 }
 
-.nav_links:hover {
+li.nav_link:hover {
   color: orange;
   cursor: pointer;
+}
+
+.nav-links li {
+  display: inline;
+  padding-right: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
 }
