@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import About from './pages/About';
 import Shop from './pages/Shop';
 import Navigation from './components/Navigation'
+import ShopItem from './pages/ShopItem';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" exact component={HomePage} />
         <Route path="/about" exact component={About} />
         <Route path="/shop" exact component={Shop} />
+        <Route path="/shop/:id" exact component={ShopItem} />
       </Switch>
     </div>
   );

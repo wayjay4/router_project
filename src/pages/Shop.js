@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 
 function Shop(){
   // declare fetchItems function
@@ -19,7 +20,7 @@ function Shop(){
     //console.log("items:");
     //console.dir(items);
     //console.dir(items.results);
-  }
+  };
 
   // execute fetchItems
   useEffect(() => {
@@ -31,7 +32,7 @@ function Shop(){
 
   // map the fetched 'items' array to the var shopItems
   const shopItems = items.map((item, index) => (
-    <p key={index}>{item.name} (sex: {item.gender})</p>
+    <p key={index}><Link to={`/shop/${index+1}`}>{item.name}</Link></p>
   ));
 
   return (
@@ -40,7 +41,7 @@ function Shop(){
         <h1>This is the shop page</h1>
       </header>
 
-      <div className="shop-item">
+      <div className="shop-items">
         {
           // display shopItems
           shopItems
