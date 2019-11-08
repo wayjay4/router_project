@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 
 function ShopItem({match}){
-
-const [isLoading, setisLoading] = useState(false);
+  // set isLoading state
+  const [isLoading, setisLoading] = useState(false);
   // call custom effect hook
   const item = useItemFetch(match, setisLoading);
 
@@ -17,23 +17,33 @@ const [isLoading, setisLoading] = useState(false);
         <h1>This is the shopItem page</h1>
       </header>
 
-      {
-        (isLoading) ? <p>IS Loading...</p> : <p>NOT Loading...</p>
-      }
-
-      <div className="shop-item">
-        <ul>
-          <li><strong>Name:</strong> {item.name}</li>
-          <li><strong>Gender:</strong> {item.gender}</li>
-          <li><strong>Haircolor:</strong> {item.hair_color}</li>
-          <li><strong>Weight:</strong> {item.mass}</li>
-        </ul>
-      </div>
+      { (isLoading) ? <LoadingMessage /> : <ShowItem item={item} /> }
     </div>
   );
 }
 
 export default ShopItem;
+
+function ShowItem(props){
+  return (
+    <div className="shop-item">
+      <ul>
+        <li><strong>Name:</strong> {props.item.name}</li>
+        <li><strong>Gender:</strong> {props.item.gender}</li>
+        <li><strong>Haircolor:</strong> {props.item.hair_color}</li>
+        <li><strong>Weight:</strong> {props.item.mass}</li>
+      </ul>
+    </div>
+  );
+}
+
+function LoadingMessage(){
+  return (
+    <div>
+      <p style={{textAlign:"center"}}>Loading...</p>
+    </div>
+  );
+}
 
 // custom effect hook
 function useItemFetch(match, handler){
