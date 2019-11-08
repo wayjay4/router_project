@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 
 function ShopItem({match}){
+
+const [isLoading, setisLoading] = useState(false);
   // call custom effect hook
-  const item = useItemFetch(match);
+  const item = useItemFetch(match, setisLoading);
 
   // display data for troubleshooting
   //console.dir(match);
@@ -14,6 +16,10 @@ function ShopItem({match}){
       <header>
         <h1>This is the shopItem page</h1>
       </header>
+
+      {
+        (isLoading) ? <p>IS Loading...</p> : <p>NOT Loading...</p>
+      }
 
       <div className="shop-item">
         <ul>
@@ -30,10 +36,12 @@ function ShopItem({match}){
 export default ShopItem;
 
 // custom effect hook
-function useItemFetch(match){
+function useItemFetch(match, handler){
   const [item, setItem] = useState({});
 
   useEffect(() => {
+    handler(prev => true);
+    //console.log(isLoading);
     const fetchItem = async () => {
       // set swapi api_url
       const api_url = `https://swapi.co/api/people/${match.params.id}`
@@ -45,7 +53,9 @@ function useItemFetch(match){
       const item = await data.json();
 
       // save results array to state
-      setItem(item)
+      setItem(item);
+      handler(prev => false);
+      //console.log(isLoading);
 
       // display data for troubleshooting
       //console.log("item:");
@@ -53,7 +63,7 @@ function useItemFetch(match){
     };
 
     fetchItem();
-  }, [match]);
+  }, [match, handler]);
 
   return item;
 }
